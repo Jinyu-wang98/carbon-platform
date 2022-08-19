@@ -1,6 +1,7 @@
 package com.wang.carbon.controller;
 
 import com.wang.carbon.common.R;
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/common")
 @Slf4j
+@Api(tags = "通用操作API")
 public class CommonController {
 
     @Value("${reggie.path}")

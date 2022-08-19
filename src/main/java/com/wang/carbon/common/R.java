@@ -25,6 +25,7 @@ public class R<T> implements Serializable{
         R<T> r = new R<T>();
         r.data = object;
         r.code = 1;
+        r.msg = "ok";
         return r;
     }
 
