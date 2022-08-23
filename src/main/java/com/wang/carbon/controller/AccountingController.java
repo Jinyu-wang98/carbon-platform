@@ -30,6 +30,13 @@ public class AccountingController {
 
     @Autowired
     private AccountingUnitService accountingUnitService;
+    /**
+     * @description  新增核算主体
+     * @author  wjy
+     * @param accountingEntity
+     * @createTime 2022/8/23 16:25
+     * @return com.wang.carbon.common.R<java.lang.String>
+     */
 
     @PostMapping("/accounting-entity")
     public R<String> save(@RequestBody AccountingEntity accountingEntity){
@@ -38,6 +45,22 @@ public class AccountingController {
         accountingEntityService.save(accountingEntity);
 
         return R.success("新增核算主体成功");
+    }
+
+    /**
+     * @description 新增核算单元
+     * @author  wjy
+     * @param accountingUnit
+     * @createTime 2022/8/23 16:26
+     * @return com.wang.carbon.common.R<java.lang.String>
+     */
+    @PostMapping("/accounting-unit")
+    public R<String> save(@RequestBody AccountingUnit accountingUnit){
+        log.info("新增核算单元：{}",accountingUnit.getName());
+
+        accountingUnitService.save(accountingUnit);
+
+        return R.success("新增核算单元成功");
     }
 
     /**
@@ -68,7 +91,7 @@ public class AccountingController {
     }
 
     /**
-     * 根据id修改核算单元信息
+     * 修改核算单元信息
      * @param accountingUnit
      * @return
      */
@@ -84,16 +107,16 @@ public class AccountingController {
      * @param id
      * @return
      */
-    @GetMapping("/accounting-unit/{id}")
+    @GetMapping("/accounting-unit")
     public R<AccountingUnit> get(@PathVariable Long id){
 
-        AccountingUnit accountingUnit = accountingUnitService.getById(id);
+        AccountingUnit byId = accountingUnitService.getById(id);
 
-        return R.success(accountingUnit);
+        return R.success(byId);
     }
 
     /**
-     * 根据id删除核算单元
+     * 删除核算单元
      * @param id
      * @return
      */

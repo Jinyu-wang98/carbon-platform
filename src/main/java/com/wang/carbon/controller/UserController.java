@@ -102,34 +102,45 @@ public class UserController {
             request.getSession().setAttribute("user",user.getId());
             return R.success(emp);
         }
-        /**
-         * @description  账号信息设置
-         * @author  wjy
-         * @param user
-         * @createTime 2022/8/18 14:29
-         * @return R<java.lang.String>
-         */
-        @PostMapping("/do_register1")
-        public R<String> login(@RequestBody User user){
-            log.info("新增用户，用户信息：{}",user.toString());
-            userService.save(user);
-            return R.success("账号信息设置完成");
-        }
+    /**
+     * 用户退出
+     * @param request
+     * @return
+     */
+    @PostMapping("/do_logout")
+    public R<String> logout(HttpServletRequest request){
+        //清理Session中保存的当前登录员工的id
+        request.getSession().removeAttribute("employee");
+        return R.success("退出成功");
+    }
+    /**
+     * @description  账号信息设置
+     * @author  wjy
+     * @param user
+     * @createTime 2022/8/18 14:29
+     * @return R<java.lang.String>
+     */
+    @PostMapping("/do_register1")
+    public R<String> login(@RequestBody User user){
+        log.info("新增用户，用户信息：{}",user.toString());
+        userService.save(user);
+        return R.success("账号信息设置完成");
+    }
 
-        /**
-         * @description 公司资质信息
-         * @author
-         * @param company
-         * @createTime 2022/8/18 14:36
-         * @return R<java.lang.String>
-         */
+    /**
+     * @description 公司资质信息
+     * @author
+     * @param company
+     * @createTime 2022/8/18 14:36
+     * @return R<java.lang.String>
+     */
 
-        @PostMapping("/do_register2")
-        public R<String> login(@RequestBody Company company){
-            log.info("公司资质信息：{}",company.toString());
-            companyService.save(company);
-            return R.success("公司资质信息设置完成");
-        }
+    @PostMapping("/do_register2")
+    public R<String> login(@RequestBody Company company){
+        log.info("公司资质信息：{}",company.toString());
+        companyService.save(company);
+        return R.success("公司资质信息设置完成");
+    }
 
     /** 获取验证码图片
      * @description

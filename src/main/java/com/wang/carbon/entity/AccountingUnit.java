@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  * @createTime 2022-08-18 21:31
  */
 @Data
-@ApiModel(description = "核酸单元信息")
+@ApiModel(description = "核算单元信息")
 public class AccountingUnit {
 
 

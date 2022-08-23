@@ -19,8 +19,8 @@ public class AccountingTask {
     @TableId(value = "id", type = IdType.ID_WORKER)
     private Long id;
 
-    @ApiModelProperty(value = "对应单元ID")
-    private Long UnitId;
+    @ApiModelProperty(value = "对应核算单元")
+    private AccountingUnit accountingUnit;
 
 
 }
