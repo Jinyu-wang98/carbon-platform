@@ -19,8 +19,8 @@ import java.time.LocalDateTime;
 public class AccountingEntity {
 
     @ApiModelProperty(value = "主键", required = true)
-    @TableId(value = "id", type = IdType.ID_WORKER)
-    private Long id;
+    @TableId(value = "id", type = IdType.ASSIGN_UUID)
+    private String id;
 
     @ApiModelProperty(value = "主体名称")
     public String name;

@@ -4,11 +4,13 @@ import com.wang.carbon.common.R;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -74,6 +76,7 @@ public class CommonController {
 
             //输出流，通过输出流将文件写回浏览器
             ServletOutputStream outputStream = response.getOutputStream();
+
 
             response.setContentType("image/jpeg");
 

@@ -25,7 +25,7 @@ public class AccountingUnit {
     @TableId(value = "id", type = IdType.ID_WORKER)
     private Long id;
 
-    @ApiModelProperty(value = "核酸单元名称")
+    @ApiModelProperty(value = "核算单元名称")
     public String name;
 
     @ApiModelProperty(value = "所属组织")
@@ -34,7 +34,7 @@ public class AccountingUnit {
     @ApiModelProperty(value = "国民经济行业")
     public String economyIndustry;
 
-    @ApiModelProperty(value = "核酸指南行业")
+    @ApiModelProperty(value = "核算指南行业")
     public String guideIndustry;
 
     @ApiModelProperty(value = "采用核算标准")

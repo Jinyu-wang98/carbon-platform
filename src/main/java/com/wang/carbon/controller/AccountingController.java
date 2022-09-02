@@ -64,7 +64,7 @@ public class AccountingController {
     }
 
     /**
-     * 核酸单元分页查询
+     * 核算单元分页查询
      * @param page
      * @param pageSize
      * @param id
@@ -120,7 +120,7 @@ public class AccountingController {
      * @param id
      * @return
      */
-    @DeleteMapping("/accounting-unit/")
+    @DeleteMapping("/accounting-unit")
     public R<String> delete(Long id){
         log.info("删除核酸单元，id为：{}",id);
         accountingUnitService.remove(id);
@@ -132,7 +132,7 @@ public class AccountingController {
      * @author
      * @param id
      * @createTime 2022/8/20 1:22
-     * @return com.wang.carbon.common.R<java.lang.String>
+     * @return R<String>
      */
 
     @GetMapping("/accounting-unit/findUnitUsedCount")
@@ -140,11 +140,4 @@ public class AccountingController {
         int count = accountingUnitService.findUnitUsedCount(id);
         return R.success("allUnitTotal:" + Constant.unitAll+"usedUnitTotal:{}"+count);
     }
-
-
-
-    
-
-
-
 }

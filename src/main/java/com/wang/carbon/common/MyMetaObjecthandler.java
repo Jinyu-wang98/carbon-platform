@@ -23,8 +23,8 @@ public class MyMetaObjecthandler implements MetaObjectHandler {
 
         metaObject.setValue("createTime", LocalDateTime.now());
         metaObject.setValue("updateTime",LocalDateTime.now());
-        metaObject.setValue("createUser",BaseContext.getCurrentId());
-        metaObject.setValue("updateUser",BaseContext.getCurrentId());
+        metaObject.setValue("createUser",BaseContext.getCurrentPhone());
+        metaObject.setValue("updateUser",BaseContext.getCurrentPhone());
     }
 
     /**
@@ -40,6 +40,6 @@ public class MyMetaObjecthandler implements MetaObjectHandler {
         log.info("线程id为：{}",id);
 
         metaObject.setValue("updateTime",LocalDateTime.now());
-        metaObject.setValue("updateUser",BaseContext.getCurrentId());
+        metaObject.setValue("updateUser",BaseContext.getCurrentPhone());
     }
 }

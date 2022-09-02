@@ -13,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
@@ -26,6 +25,7 @@ import java.io.OutputStream;
 import java.util.concurrent.TimeUnit;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/user")
 @Slf4j
 @Api(tags = "用户操作API")
@@ -81,7 +81,8 @@ public class UserController {
     public R<User> login(@RequestBody User user, HttpServletRequest request){
             //1、将页面提交的密码password进行md5加密处理
             String password = user.getPassword();
-            password = DigestUtils.md5DigestAsHex(password.getBytes());
+            String companyId = user.getCompanyId();
+            //password = DigestUtils.md5DigestAsHex(password.getBytes());
             //2、根据页面提交的phone查询数据库
             LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
             queryWrapper.eq(User::getPhone,user.getPhone());
@@ -95,11 +96,11 @@ public class UserController {
                 return R.error("密码错误");
             }
             //5.验证码比对，如果不一致返回登陆失败结果
-            if(!request.getSession().getAttribute("verifyCode").equals(request.getParameter("user_code"))){
-                return  R.error("验证码输入不正确");
+            if(!emp.getCompanyId().equals(companyId)){
+                return R.error("企业编码错误");
             }
             //6、登录成功，将用户id存入Session并返回登录成功结果
-            request.getSession().setAttribute("user",user.getId());
+            request.getSession().setAttribute("user",user.getPhone());
             return R.success(emp);
         }
     /**

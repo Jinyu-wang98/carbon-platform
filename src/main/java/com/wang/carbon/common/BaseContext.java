@@ -8,17 +8,17 @@ public class BaseContext {
 
     /**
      * 设置值
-     * @param id
+     * @param phone
      */
-    public static void setCurrentId(Long id){
-        threadLocal.set(id);
+    public static void setCurrentPhone(String phone){
+        threadLocal.set(Long.valueOf(phone));
     }
 
     /**
      * 获取值
      * @return
      */
-    public static Long getCurrentId(){
+    public static Long getCurrentPhone(){
         return threadLocal.get();
     }
 }

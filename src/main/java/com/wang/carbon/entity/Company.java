@@ -18,9 +18,8 @@ import java.io.Serializable;
 public class Company implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "主键", required = true)
-    @TableId(value = "id", type = IdType.ID_WORKER)
-    private Long id;
+    @ApiModelProperty(value = "企业编码", required = true)
+    private Long companyId;
 
     @ApiModelProperty(value = "企业名称")
     private String companyName;
