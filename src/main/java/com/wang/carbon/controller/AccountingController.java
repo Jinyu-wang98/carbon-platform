@@ -62,7 +62,6 @@ public class AccountingController {
 
         return R.success("新增核算单元成功");
     }
-
     /**
      * 核算单元分页查询
      * @param page
